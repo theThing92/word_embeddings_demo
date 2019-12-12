@@ -13287,9 +13287,9 @@ meaning." (Jurafsky &amp; Martin, 2019)</p>
 <li>z.B.: Kaffee - Becher<br></li>
 <li>semantische Felder / Wortfelder<br><ul>
 <li>Topic-Modelle<br><ul>
-<li>LSI/LSA<br></li>
-<li>LDA<br></li>
-<li>HDP<br></li>
+<li><a href="lsa.colorado.edu/papers/JASIS.lsi.90.pdf">Latent Semantic Indexing / Latent Semantic Analyis (LSI/LSA)</a><br></li>
+<li><a href="http://www.jmlr.org/papers/volume3/blei03a/blei03a.pdf">Latent Dirichlet Allocation (LDA)</a><br></li>
+<li><a href="https://people.eecs.berkeley.edu/~jordan/papers/hdp.pdf">Hierarchical Dirichlet Process (HDP)</a><br></li>
 <li>...<br></li>
 </ul>
 </li>
@@ -13574,7 +13574,7 @@ Anzahl Spalten (m): 3
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="2.3.-Embeddings">2.3. Embeddings<a class="anchor-link" href="#2.3.-Embeddings">&#182;</a></h3><p>Aus den <a href="#2.2.-Vektorsemantik">2.2.</a> vorgestellten Zusammenhängen kann nun der Begriff Embedding defininert werden:</p>
+<h3 id="2.3.-Embeddings">2.3. Embeddings<a class="anchor-link" href="#2.3.-Embeddings">&#182;</a></h3><p>Aus den in <a href="#2.2.-Vektorsemantik">2.2.</a> vorgestellten Zusammenhängen kann nun der Begriff Embedding defininert werden:</p>
 <p><strong>Definition</strong></p>
 <blockquote><p>The idea of vector semantics is thus to represent a word as a point in some multidimensional
 semantic space. Vectors for representing words are generally called
@@ -13859,8 +13859,8 @@ d2_bow = [1, 1, 1, 1, 0, 1, 0, 1, 2, 1, 1]<br></p>
 
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>2019-12-05 11:47:25,600 : INFO : adding document #0 to Dictionary(0 unique tokens: [])
-2019-12-05 11:47:25,616 : INFO : built Dictionary(11 unique tokens: [&#39;John&#39;, &#39;Mary&#39;, &#39;likes&#39;, &#39;movies&#39;, &#39;to&#39;]...) from 2 documents (total 19 corpus positions)
+<pre>2019-12-12 16:29:53,382 : INFO : adding document #0 to Dictionary(0 unique tokens: [])
+2019-12-12 16:29:53,383 : INFO : built Dictionary(11 unique tokens: [&#39;John&#39;, &#39;Mary&#39;, &#39;likes&#39;, &#39;movies&#39;, &#39;to&#39;]...) from 2 documents (total 19 corpus positions)
 </pre>
 </div>
 </div>
@@ -13928,10 +13928,10 @@ d2_bow = [1, 1, 1, 1, 0, 1, 0, 1, 2, 1, 1]<br></p>
 <div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Das resultierende BOW-Modell ist zudem Sparse als Liste von Tupeln gespeichert,</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Das resultierende BOW-Modell ist zudem sparse als Liste von Tupeln gespeichert,</span>
 <span class="c1"># d.h. Dimensionen mit 0 vorkommenden Termen werden ausgelassen (aus Performanzgründen)</span>
 <span class="c1"># Das erste Element des Tuples korrespondiert mit dem Termindex im Dictionary, wohingegen</span>
-<span class="c1"># das zweite Elementdie absolute Termfrequenz darstellt</span>
+<span class="c1"># das zweite Element die absolute Termfrequenz darstellt</span>
 <span class="n">bow_corpus</span> <span class="o">=</span> <span class="p">[</span><span class="n">dictionary</span><span class="o">.</span><span class="n">doc2bow</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span> <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">corpus</span><span class="p">]</span>
 <span class="n">bow_corpus</span>
 </pre></div>
@@ -14013,6 +14013,7 @@ BOW-Vektor (nur unbekannte Terme in Eingabe: [])
 <span class="c1"># auf 2- oder 3-D reduziert werden</span>
 <span class="kn">from</span> <span class="nn">sklearn.manifold</span> <span class="kn">import</span> <span class="n">TSNE</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="n">d1_bow</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
 <span class="n">d2_bow</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
@@ -14059,19 +14060,31 @@ BOW-Vektor (nur unbekannte Terme in Eingabe: [])
     <div class="prompt"></div>
 
 
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-intense-fg ansi-bold">---------------------------------------------------------------------------</span>
-<span class="ansi-red-intense-fg ansi-bold">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-intense-fg ansi-bold">&lt;ipython-input-12-7f2e4cc30c88&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-fg">      8</span> d2_bow <span class="ansi-yellow-intense-fg ansi-bold">=</span> <span class="ansi-yellow-intense-fg ansi-bold">[</span><span class="ansi-cyan-intense-fg ansi-bold">1</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-cyan-intense-fg ansi-bold">1</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-cyan-intense-fg ansi-bold">1</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-cyan-intense-fg ansi-bold">1</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-cyan-intense-fg ansi-bold">0</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-cyan-intense-fg ansi-bold">1</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-cyan-intense-fg ansi-bold">0</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-cyan-intense-fg ansi-bold">1</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-cyan-intense-fg ansi-bold">2</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-cyan-intense-fg ansi-bold">1</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-cyan-intense-fg ansi-bold">1</span><span class="ansi-yellow-intense-fg ansi-bold">]</span>
-<span class="ansi-green-fg">      9</span> 
-<span class="ansi-green-intense-fg ansi-bold">---&gt; 10</span><span class="ansi-yellow-intense-fg ansi-bold"> </span>arr1 <span class="ansi-yellow-intense-fg ansi-bold">=</span> np<span class="ansi-yellow-intense-fg ansi-bold">.</span>array<span class="ansi-yellow-intense-fg ansi-bold">(</span>d1_bow<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">.</span>reshape<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-cyan-intense-fg ansi-bold">1</span><span class="ansi-yellow-intense-fg ansi-bold">,</span><span class="ansi-yellow-intense-fg ansi-bold">-</span><span class="ansi-cyan-intense-fg ansi-bold">1</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">     11</span> arr2 <span class="ansi-yellow-intense-fg ansi-bold">=</span> np<span class="ansi-yellow-intense-fg ansi-bold">.</span>array<span class="ansi-yellow-intense-fg ansi-bold">(</span>d2_bow<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">.</span>reshape<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-cyan-intense-fg ansi-bold">1</span><span class="ansi-yellow-intense-fg ansi-bold">,</span><span class="ansi-yellow-intense-fg ansi-bold">-</span><span class="ansi-cyan-intense-fg ansi-bold">1</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">     12</span> 
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Term-Dokument-Matrix (chronologisch):
+[[1 2 1 1 2 1 1 0 0 0 0]
+ [1 1 1 1 0 1 0 1 2 1 1]]
 
-<span class="ansi-red-intense-fg ansi-bold">NameError</span>: name &#39;np&#39; is not defined</pre>
+Term-Dokument-Matrix (2-D):
+[[  164.85704  1814.0579 ]
+ [ -164.85692 -1814.0576 ]]
+</pre>
 </div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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
+"
+>
+</div>
+
 </div>
 
 </div>
@@ -14087,63 +14100,11 @@ BOW-Vektor (nur unbekannte Terme in Eingabe: [])
 <p>Für die Dimensionen der Term-Term-Matrix gilt:</p>
 <ul>
 <li>Anzahl Spalten = |V| (V=Vokabular)</li>
-<li>Anzahl Zeilen = |V| (D=Menge der Dokumente)</li>
+<li>Anzahl Zeilen = |V| (V=Vokabular)</li>
 </ul>
 
 </div>
 </div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-    </div>
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
@@ -14201,7 +14162,7 @@ Neben den hier vorgestellten Gewichtungen existieren eine Reihe von alternativen
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># TFIDF-Transformationen</span>
@@ -14215,10 +14176,45 @@ Neben den hier vorgestellten Gewichtungen existieren eine Reihe von alternativen
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>2019-12-12 16:29:55,112 : INFO : collecting document frequencies
+2019-12-12 16:29:55,113 : INFO : PROGRESS: processing document #0
+2019-12-12 16:29:55,115 : INFO : calculating IDF weights for 2 documents and 11 features (16 matrix non-zeros)
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[[(3, 0.8944271909999159), (5, 0.4472135954999579)],
+ [(7, 0.3779644730092272),
+  (8, 0.7559289460184544),
+  (9, 0.3779644730092272),
+  (10, 0.3779644730092272)]]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Erinnerung: So sah unser Spielzeugkorpus aus</span>
@@ -14228,6 +14224,37 @@ Neben den hier vorgestellten Gewichtungen existieren eine Reihe von alternativen
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>{0: &#39;John&#39;,
+ 1: &#39;Mary&#39;,
+ 2: &#39;likes&#39;,
+ 3: &#39;movies&#39;,
+ 4: &#39;to&#39;,
+ 5: &#39;too&#39;,
+ 6: &#39;watch&#39;,
+ 7: &#39;also&#39;,
+ 8: &#39;football&#39;,
+ 9: &#39;games&#39;,
+ 10: &#39;hates&#39;}
+
+[[&#39;John&#39;, &#39;likes&#39;, &#39;to&#39;, &#39;watch&#39;, &#39;movies&#39;, &#39;Mary&#39;, &#39;likes&#39;, &#39;movies&#39;, &#39;too&#39;],
+ [&#39;John&#39;, &#39;also&#39;, &#39;likes&#39;, &#39;to&#39;, &#39;watch&#39;, &#39;football&#39;, &#39;games&#39;, &#39;Mary&#39;, &#39;hates&#39;, &#39;football&#39;]]
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -14350,7 +14377,7 @@ cosine(v,w) = -1 \widehat{=} "Vektoren\ haben\ entgegengesetzte\ Ausrichtung" \w
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Suche nach dem ähnlichsten Dokument gegeben einen Suchanfrage/Query</span>
@@ -14377,6 +14404,44 @@ cosine(v,w) = -1 \widehat{=} "Vektoren\ haben\ entgegengesetzte\ Ausrichtung" \w
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>2019-12-12 16:29:55,173 : WARNING : scanning corpus to determine the number of features (consider setting `num_features` explicitly)
+2019-12-12 16:29:55,175 : INFO : creating matrix with 2 documents and 11 features
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Query: [&#39;movies&#39;]
+Kosinus-Ähnlichkeit: [(0, 0.8944272), (1, 0.0)]
+
+Query: [&#39;football&#39;]
+Kosinus-Ähnlichkeit: [(0, 0.0), (1, 0.75592893)]
+
+Query: [&#39;movies&#39;, &#39;football&#39;]
+Kosinus-Ähnlichkeit: [(0, 0.6324555), (1, 0.5345225)]
+
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -14484,7 +14549,7 @@ Mit dem vorgestellten word2vec-Verfahren können zwar bekannte Wörter in einem 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Laden des vortrainierten word2vec-Google-News-Korpus</span>
@@ -14498,10 +14563,29 @@ Mit dem vorgestellten word2vec-Verfahren können zwar bekannte Wörter in einem 
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>2019-12-12 16:29:56,462 : INFO : loading projection weights from C:\Users\mvogel/gensim-data\word2vec-google-news-300\word2vec-google-news-300.gz
+2019-12-12 16:34:18,919 : INFO : loaded (3000000, 300) matrix from C:\Users\mvogel/gensim-data\word2vec-google-news-300\word2vec-google-news-300.gz
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics.pairwise</span> <span class="kn">import</span> <span class="n">cosine_similarity</span>
@@ -14526,14 +14610,36 @@ Mit dem vorgestellten word2vec-Verfahren können zwar bekannte Wörter in einem 
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Kosinus-Ähnlichkeit zwischen kompositionellem Vektor zu &#39;queen&#39; und tatsächlichem Wortvektor &#39;queen&#39;:
+0.7300517559051514
+
+Kosinus-Ähnlichkeit zwischen kompositionellem Vektor zu &#39;Rome&#39; und tatsächlichem Wortvektor &#39;Rome&#39;:
+0.7073157429695129
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Wie ähnlich sind sich zwei Wörter?</span>
-<span class="n">w1</span> <span class="o">=</span> <span class="s2">&quot;queen&quot;</span>
+<span class="n">w1</span> <span class="o">=</span> <span class="s2">&quot;peasant&quot;</span>
 <span class="n">w2</span> <span class="o">=</span> <span class="s2">&quot;king&quot;</span>
 
 <span class="n">sim_w1_w2</span> <span class="o">=</span> <span class="n">cosine_similarity</span><span class="p">(</span><span class="n">word2vec</span><span class="o">.</span><span class="n">get_vector</span><span class="p">(</span><span class="n">w1</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">word2vec</span><span class="o">.</span><span class="n">get_vector</span><span class="p">(</span><span class="n">w2</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
@@ -14542,6 +14648,25 @@ Mit dem vorgestellten word2vec-Verfahren können zwar bekannte Wörter in einem 
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Kosinus-Ähnlichkeit zwischen &#39;peasant&#39; und &#39;king&#39;:
+0.18507906794548035
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -14591,8 +14716,8 @@ Die gesamten word2vec-Embeddings von Google News können <strong>interaktiv</str
 <li>Features auf Character-Ebene</li>
 <li>Kontextualisierung von Word Embeddings</li>
 </ul>
-<p>Grundsätzlich werden zunächst die Features auf Character-Ebene durch ein bilaterales Long-Short-Term-Memory-Netzwerk (BiLSTM) codiert. Grob gesagt ermöglichen diese Art von Netzwerk die Speicherung von Information über eine beliebige Sequenzlänge hinweg über sogenannten <strong>Hidden States</strong>, ohne dass z.B. Information, die zu Beginn einer Sequenz erlernt wurde, später vergessen wird, ein Problem, dass bei 'klassischen' Rekurrenten Neuronalen Netzen auftritt. Der Informationsfluss wird dahingehend kontrolliert, dass über bestimmte <strong>Gates</strong> kontrolliert wird, welche Information in den Hidden Sates gespeichert wird oder nicht.
-<img src="https://miro.medium.com/max/1516/1*yBXV9o5q7L_CvY7quJt3WQ.png" alt="">
+<p>Grundsätzlich werden zunächst die Features auf Character-Ebene durch ein bilaterales Long-Short-Term-Memory-Netzwerk (BiLSTM) codiert (<a href="https://towardsdatascience.com/illustrated-guide-to-lstms-and-gru-s-a-step-by-step-explanation-44e9eb85bf21">s. hier für eine knappe Einführung zu LSTM</a>). Grob gesagt ermöglichen diese Art von Netzwerk die Speicherung von Information über eine beliebige Sequenzlänge hinweg über sogenannten <strong>Hidden States</strong> und <strong>Cell States</strong>, ohne dass z.B. Information, die zu Beginn einer Sequenz erlernt wurde, später vergessen wird, ein Problem, dass bei 'klassischen' Rekurrenten Neuronalen Netzen auftritt. Der Informationsfluss wird dahingehend kontrolliert, dass über bestimmte <strong>Gates</strong> kontrolliert wird, welche Information in den Hidden Sates gespeichert wird oder nicht.
+<img src="img/lstm.png" alt="">
 <em>Abb. 9: Schematische Darstellung der Funktionsweise einer LSTM- und GRU-Zelle</em></p>
 <ul>
 <li><em>Quelle:</em><ul>
@@ -14647,7 +14772,7 @@ Die gesamten word2vec-Embeddings von Google News können <strong>interaktiv</str
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">flair.models</span> <span class="kn">import</span> <span class="n">SequenceTagger</span>
@@ -14670,10 +14795,40 @@ Die gesamten word2vec-Embeddings von Google News können <strong>interaktiv</str
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>2019-12-12 16:34:28,206 : INFO : PyTorch version 1.3.1+cpu available.
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>2019-12-12 16:34:29,034 loading file C:\Users\mvogel\.flair\models\en-ner-conll03-v0.4.pt
+Annotierter Satz: George &lt;B-PER&gt; Washington &lt;E-PER&gt; went to Washington &lt;S-LOC&gt; .
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Stacked Embeddings für diese Netz</span>
@@ -14685,10 +14840,48 @@ Die gesamten word2vec-Embeddings von Google News können <strong>interaktiv</str
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[20]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>StackedEmbeddings(
+  (list_embedding_0): WordEmbeddings(&#39;/home/aakbik/.flair/embeddings/glove.gensim&#39;)
+  (list_embedding_1): FlairEmbeddings(
+    (lm): LanguageModel(
+      (drop): Dropout(p=0.05, inplace=False)
+      (encoder): Embedding(300, 100)
+      (rnn): LSTM(100, 2048)
+      (decoder): Linear(in_features=2048, out_features=300, bias=True)
+    )
+  )
+  (list_embedding_2): FlairEmbeddings(
+    (lm): LanguageModel(
+      (drop): Dropout(p=0.05, inplace=False)
+      (encoder): Embedding(300, 100)
+      (rnn): LSTM(100, 2048)
+      (decoder): Linear(in_features=2048, out_features=300, bias=True)
+    )
+  )
+)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sentence</span> <span class="o">=</span> <span class="n">Sentence</span><span class="p">(</span><span class="s1">&#39;The grass is green .&#39;</span><span class="p">)</span>
@@ -14707,14 +14900,65 @@ Die gesamten word2vec-Embeddings von Google News können <strong>interaktiv</str
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Token: 1 The
+tensor([-0.0382, -0.2449,  0.7281,  ...,  0.0080,  0.0566,  0.0259])
+torch.Size([4196])
+
+Token: 2 grass
+tensor([-0.8135,  0.9404, -0.2405,  ..., -0.0364, -0.0064, -0.3664])
+torch.Size([4196])
+
+Token: 3 is
+tensor([-0.5426,  0.4148,  1.0322,  ..., -0.0837, -0.1291,  0.0049])
+torch.Size([4196])
+
+Token: 4 green
+tensor([-0.6791,  0.3491, -0.2398,  ...,  0.0098, -0.0034,  0.0115])
+torch.Size([4196])
+
+Token: 5 .
+tensor([-0.3398,  0.2094,  0.4635,  ..., -0.0573, -0.0117, -0.0455])
+torch.Size([4196])
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="7.-Diskussion">7. Diskussion<a class="anchor-link" href="#7.-Diskussion">&#182;</a></h2><p><strong>Themen</strong></p>
 <ul>
-<li>Evaluation von Word Embeddings?</li>
-<li>Bias bei Word Embeddings?</li>
+<li>Evaluation von Word Embeddings?<ul>
+<li>häufig mit externem Task verknüpft, z.B. Text Classification, POS-Tagging, NER etc.<ul>
+<li>Wie viel perfomanter wird ein System im Vergleich zu einem System ohne Embeddings/mit anderen semantischen Repäsentationsformen?</li>
+</ul>
+</li>
+<li>daneben aber auch intrinsische Evaluation (auf psycholinguisichen Korpora)<ul>
+<li>Wie ähnlich sind sich Word Embeddings und z.B. Merkmalsvektoren?</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Bias bei Word Embeddings?<ul>
+<li>Bias in den Daten produziert auch biased Embeddings (?)</li>
+<li>Versuch der Korrektur von biased Embeddings (s. Jurafsky &amp; Martin, 2019)</li>
+</ul>
+</li>
 </ul>
 
 </div>
