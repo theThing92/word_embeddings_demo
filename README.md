@@ -1,5 +1,5 @@
 # Word Embedding Demo
-Das vorliegende Git-Repository enthält den Beispiel-Code für das Sitzungsreferat zum Thema ***Word Embeddings*** vom 05.12.2019 im Hauptseminar "Konzepte der Ähnlichkeit aus pycho- und computerlinguistischer Perspektive" (WS 2019/2020).
+Das vorliegende Git-Repository enthält den Beispiel-Code für das Sitzungsreferat zum Thema ***Word Embeddings*** vom 05.12.2019 im Hauptseminar "Konzepte der Ähnlichkeit aus psycho- und computerlinguistischer Perspektive" (WS 2019/2020).
 
 **Hinweis:**<br>
 Das Jupyter-Notebook basiert in Teilen auf Tutorials von zwei Framworks für Word Embeddings (s.u.), weswegen ich an dieser Stelle auf die entsprechenden Quellen verweise:
